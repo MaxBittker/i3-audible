@@ -1,7 +1,5 @@
 const i3wm = require("i3wm");
-
 var player = require("play-sound")((opts = { player: "aplay" }));
-
 const path = require("path");
 const fs = require("fs");
 
@@ -29,7 +27,7 @@ function click(x) {
 }
 
 i3wm.Client.connect().then(client => {
-  console.log("Connected");
+  console.log("Connected to i3");
   client.subscribe("window", "workspace");
 
   client.on("workspace", msg => {
@@ -45,6 +43,7 @@ i3wm.Client.connect().then(client => {
   });
 });
 
+/// Some cleanup stuff, maybe not needed:
 function exitHandler(options, exitCode) {
   i3wm.Client.disconnect(client);
 
